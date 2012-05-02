@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+    <title>Zenedit - prototype</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <!-- Le styles -->
+  <link href="./css/bootstrap.css" rel="stylesheet">
+    <style type="text/css">
+	body { padding-top: 60px; padding-bottom: 40px; }
+	.sidebar-nav { padding: 9px 0; }
+  </style>
+  <link href="./css/bootstrap-responsive.css" rel="stylesheet">
+  <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
+    <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <!-- Le fav and touch icons -->
+  <link rel="shortcut icon" href="images/favicon.ico">
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+    <script type="text/javascript" src="./js/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="./js/jquery-ui-1.8.18.custom.min.js"></script>
+    <script type="text/javascript" src="./js/blogeditor.js"></script>
+<script>
+</script>
+  </head>
+  <body>
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="#">ZenEdit prototype</a>
+          <div class="nav-collapse">
+            <ul class="nav">
+              <li class="active">
+                <a href="#">ホーム</a>
+              </li>
+              <li>
+                <a href="#contact">ヘルプ</a>
+              </li>
+            </ul>
+            <ul class="nav pull-right">
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">zenback 
+                  <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a href="#">
+                      <i class="icon-user"></i>プロフィール
+                    </a>
+                  </li>
+                  <li>
+                    <a href="setting.html">
+                      <i class="icon-cog"></i>設定変更
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <i class="icon-off"></i>ログアウト
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        <!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span3" id="side">
+          <div class="well sidebar-nav">
+            <ul class="nav nav-list">
+              <li>
+                <form class="form-search">
+                <input type="text" class="input-small search-query">
+                  <button type="submit" class="btn">
+                    <i class="icon-search"></i>検索
+                  </button>
+                </form>
+              </li>
+              <li class="">
+                <a class="" href="#">
+                  <i class="icon-plus"></i>新しい記事
+                </a>
+              </li>
+              <li class="nav-header">記事リスト</li>
+              <li class="active">
+                <a href="#">「EOS 5D Mark III」写真撮影してきたよ (大見出しの例)</a>
+              </li>
+              <li>
+                <a href="#">孫社長「プラチナバンドでiPhone 4SやiPad 2の接続が改善する」</a>
+              </li>
+              <li>
+                <a href="#">ネタリスト（2012/03/02 15:00）日本からはなぜアップルが生まれないのか</a>
+              </li>
+              <li>
+                <a href="#">PHS「070」携帯電話にも割り当てへ</a>
+              </li>
+              <li>
+                <a href="#">「ジョブズ二世」と期待されるAppleのスコット・フォーストルとは？</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="span9" id="main">
+          <div class="alert alert-info subnav">編集中の記事: 「EOS 5D Mark III」写真撮影してきたよ - 
+			<span id="save_message">保存しました。　<span id="save_message_h">**</span>:<span id="save_message_m">**</span>:<span id="save_message_s">**</span></span>
+          </div>
+          <ul class="nav nav-tabs">
+            <li class="active">
+              <a href="#edit" data-toggle="tab">編集</a>
+            </li>
+            <li>
+              <a href="#preview" data-toggle="tab">プレビュー</a>
+            </li>
+            <li>
+              <a href="#html" data-toggle="tab">HTMLで表示</a>
+            </li>
+          </ul>
+          <div class="tab-content">
+            <div class="tab-pane active" id="edit">
+              <div class="well2">
+                <div class="control-group" id="entry_title">
+                  <div class="controls">
+                  <input type="text" class="input-xxlarge" id="entryTitle" style="font-size: 130%;" placeholder="記事のタイトル" value="「EOS 5D Mark III」写真撮影してきたよ">
+                    <span id="countUp">0</span>文字
+                  </div>
+                </div>
+                <div id="sortable" class="sortarea">
+                  <div class="well3 ui-state-default">
+                    <h3>「EOS 5D Mark III」写真撮影してきたよ (大見出しの例)</h3>
+                  </div>
+                  <div class="well3 ui-state-default">
+                    <p>(文章の例)キヤノンMJからお借りしてきたベータ機の「EOS 5D Mark III」を手に、Evernoteの2周年記念イベントに参加し、パシャパシャと写真撮影してきました。 
+                    <br />
+                    <br />使用したレンズは、キヤノンの35mmです。
+                    </p>
+                  </div>
+                  <div class="well3 ui-state-default">
+                    <h4>写真サンプル(中見出しの例)</h4>
+                  </div>
+                  <div class="well3 ui-state-default">
+                    <p>
+                    <img src="http://netafull.net/images2009/EOS5DMKIII_0072.JPG" alt="" width="" height="" border="" align="" />
+                    <br />素敵なワイングラス
+                    <br />
+                      <small>source: 
+                        <a>http://netafull.net/dcam/039814.html</a>
+                      </small>
+                    </p>
+                  </div>
+                </div>
+              <hr>
+                <div class="well">
+                  <div class="btn-group">
+                    <a class="btn active" href="#">
+                      <i class="icon-flag"></i>見出し
+                    </a>
+                    <a class="btn" href="#">
+                      <i class="icon-font"></i>テキスト
+                    </a>
+                    <a class="btn" href="#">
+                      <i class="icon-picture"></i>画像
+                    </a>
+                    <a class="btn" href="#">
+                      <i class="icon-film"></i>動画
+                    </a>
+                    <a class="btn" href="#">
+                      <i class="icon-comment"></i>引用
+                    </a>
+                    <a class="btn" href="#">
+                      <i class="icon-list"></i>箇条書き
+                    </a>
+                    <a class="btn" href="#">
+                      <i class="icon-shopping-cart"></i>アフィリンク
+                    </a>
+                  </div>
+                  <div class="control-group">
+                  <input type="text" class="input-xxlarge" id="midashi" placeholder="見出し１">
+                  </div>
+                  <div class="control-group">
+                    <label class="radio inline">
+                    <input type="radio" name="midashi_type" id="midashi_type" value="h3" checked="checked">大見出し(h3)
+                    </label>
+                    <label class="radio inline">
+                    <input type="radio" name="midashi_type" id="midashi_type" value="h4">中見出し(h4)
+                    </label>
+                    <label class="radio inline">
+                    <input type="radio" name="midashi_type" id="midashi_type" value="h5">小見出し(h5)
+                    </label>
+                  </div>
+                  <button type="submit" class="btn btn-primary" id="save_h">Save changes</button>
+                  <button class="btn" id="cancel_h">Cancel</button>
+                </div>
+                <div class="well">
+                  <div class="btn-group">
+                    <a class="btn" href="#">
+                      <i class="icon-flag"></i>見出し
+                    </a>
+                    <a class="btn active" href="#">
+                      <i class="icon-font"></i>テキスト
+                    </a>
+                    <a class="btn" href="#">
+                      <i class="icon-picture"></i>画像
+                    </a>
+                    <a class="btn" href="#">
+                      <i class="icon-film"></i>動画
+                    </a>
+                    <a class="btn" href="#">
+                      <i class="icon-comment"></i>引用
+                    </a>
+                    <a class="btn" href="#">
+                      <i class="icon-list"></i>箇条書き
+                    </a>
+                    <a class="btn" href="#">
+                      <i class="icon-shopping-cart"></i>アフィリンク
+                    </a>
+                  </div>
+                  <div class="control-group">
+                    <div class="controls">
+                      <textarea class="input-xxlarge" id="textarea" rows="6" placeholder="本文"></textarea>
+                    </div>
+                  </div>
+                  <button type="submit" class="btn btn-primary">Save changes</button>
+                  <button class="btn">Cancel</button>
+                </div>
+                <div class="well">
+                  <div class="btn-group">
+                    <a class="btn" href="#">
+                      <i class="icon-flag"></i>見出し
+                    </a>
+                    <a class="btn" href="#">
+                      <i class="icon-font"></i>テキスト
+                    </a>
+                    <a class="btn active" href="#">
+                      <i class="icon-picture"></i>画像
+                    </a>
+                    <a class="btn" href="#">
+                      <i class="icon-film"></i>動画
+                    </a>
+                    <a class="btn" href="#">
+                      <i class="icon-comment"></i>引用
+                    </a>
+                    <a class="btn" href="#">
+                      <i class="icon-list"></i>箇条書き
+                    </a>
+                    <a class="btn" href="#">
+                      <i class="icon-shopping-cart"></i>アフィリンク
+                    </a>
+                  </div>
+                  <div class="row">
+                    <div class="span4">アップロード 
+                      <div class="well">ドラッグ＆ドロップ 
+                      <br />or 
+                      <br />
+                        <div class="controls">
+                        <input class="input-file" id="fileInput" type="file">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="span4">探して追加 
+                      <div class="control-group">
+                        <div class="nav nav-pills">
+                          <a class="btn" href="#getWebImages" data-toggle="modal">
+                            <i class="icon-search"></i>Web上から検索
+                          </a>
+                        </div>
+                        <div class="controls">
+                          <form class="form-inline">
+                          <input type="text" class="input-medium" placeholder="URL">
+                            <button type="submit" class="btn">チェック</button>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <button type="submit" class="btn btn-primary">Save changes</button>
+                  <button class="btn">Cancel</button>
+                </div>
+                <div class="well">
+                  <div class="btn-group">
+                    <a class="btn" href="#">
+                      <i class="icon-flag"></i>見出し
+                    </a>
+                    <a class="btn" href="#">
+                      <i class="icon-font"></i>テキスト
+                    </a>
+                    <a class="btn" href="#">
+                      <i class="icon-picture"></i>画像
+                    </a>
+                    <a class="btn" href="#">
+                      <i class="icon-film"></i>動画
+                    </a>
+                    <a class="btn active" href="#">
+                      <i class="icon-comment"></i>引用
+                    </a>
+                    <a class="btn" href="#">
+                      <i class="icon-list"></i>箇条書き
+                    </a>
+                    <a class="btn" href="#">
+                      <i class="icon-shopping-cart"></i>アフィリンク
+                    </a>
+                  </div>
+                  <div class="control-group">
+                    <label class="radio inline">
+                    <input type="radio" id="inlineCheckbox1" value="option1" checked>サイトから引用
+                    </label>
+                    <label class="radio inline">
+                    <input type="radio" id="inlineCheckbox2" value="option2">Twitterから引用
+                    </label>
+                  </div>
+                  <div class="control-group">
+                    <div class="controls">
+                      <textarea class="input-xxlarge" id="textarea" rows="3" placeholder="引用文"></textarea>
+                    <br />
+                    <input type="text" class="input-xlarge" id="input01" placeholder="ソースURL">
+                    </div>
+                  </div>
+                  <div class="control-group">
+                    <label class="radio inline">
+                    <input type="radio" id="inlineCheckbox1" value="option1">サイトから引用
+                    </label>
+                    <label class="radio inline">
+                    <input type="radio" id="inlineCheckbox2" value="option2" checked>Twitterから引用
+                    </label>
+                  </div>
+                  <div class="control-group">
+                    <div class="controls">
+                    <input type="text" class="input-xxlarge" id="input01" placeholder="ツイートのURL">
+                    </div>
+                  </div>
+                  <button type="submit" class="btn btn-primary">Save changes</button>
+                  <button class="btn">Cancel</button>
+                </div>
+              </div>
+              <div id="submit">
+              <input class="btn-primary btn-large" type="button" value="送信">
+              <input class="btn-large" type="submit" value="下書き保存">
+              </div>
+            </div>
+            <div class="tab-pane" id="preview">
+              <div class="well2">
+                <h3>「EOS 5D Mark III」写真撮影してきたよ (大見出しの例)</h3>
+                <p>(文章の例)キヤノンMJからお借りしてきたベータ機の「EOS 5D Mark III」を手に、Evernoteの2周年記念イベントに参加し、パシャパシャと写真撮影してきました。 
+                <br />
+                <br />使用したレンズは、キヤノンの35mmです。
+                </p>
+                <h4>写真サンプル(中見出しの例)</h4>
+                <p>
+                <img src="http://netafull.net/images2009/EOS5DMKIII_0072.JPG" alt="" width="" height="" border="" align="" />
+                <br />素敵なワイングラス
+                <br />
+                  <small>source: 
+                    <a>http://netafull.net/dcam/039814.html</a>
+                  </small>
+                </p>
+              </div>
+              <div id="submit">
+              <input class="btn-primary btn-large" type="button" value="送信">
+              <input class="btn-large" type="submit" value="下書き保存">
+              </div>
+            </div>
+            <div class="tab-pane" id="html">
+              <pre>
+&lt;h3&gt;「EOS&nbsp;5D&nbsp;Mark&nbsp;III」写真撮影してきたよ&nbsp;(大見出しの例)&lt;/h3&gt;
+&lt;p&gt;(文章の例)キヤノンMJからお借りしてきたベータ機の「EOS&nbsp;5D&nbsp;Mark&nbsp;III」を手に、Evernoteの2周年記念イベントに参加し、パシャパシャと写真撮影してきました。&nbsp; &lt;br&nbsp;/&gt; &lt;br&nbsp;/&gt;使用したレンズは、キヤノンの35mmです。 &lt;/p&gt;
+&lt;h4&gt;写真サンプル(中見出しの例)&lt;/h4&gt;
+&lt;p&gt; &lt;img&nbsp;src=&quot;http://netafull.net/images2009/EOS5DMKIII_0072.JPG&quot;&nbsp;alt=&quot;&quot;&nbsp;width=&quot;&quot;&nbsp;height=&quot;&quot;&nbsp;border=&quot;&quot;&nbsp;align=&quot;&quot;&nbsp;/&gt; &lt;br&nbsp;/&gt;素敵なワイングラス &lt;br&nbsp;/&gt;
+&nbsp;&nbsp;&lt;small&gt;source:&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&lt;a&gt;http://netafull.net/dcam/039814.html&lt;/a&gt; &nbsp;&nbsp;&lt;/small&gt; &lt;/p&gt; </pre>
+<div id="submit">
+<input class="btn-primary btn-large" type="button" value="ソースコードをコピー">
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <hr>
+    <footer class="container">
+      <div class="row">
+        <div class="span4">
+          <h4>メニュー</h4>
+          <ul>
+            <li>新しい記事</li>
+            <li>記事一覧</li>
+            <li>ヘルプ</li>
+          </ul>
+        </div>
+        <div class="span4">
+          <h4>コンタクトフォーム</h4>
+        <br />
+        <input type="text" class="input-large" name="" value="" placeholder="連絡先メールアドレス"/>
+        <br />
+          <textarea class="input-large" id="textarea" rows="3" placeholder="お問い合わせ内容"></textarea>
+          <div id="submit">
+          <input class="btn-small btn-large" type="button" value="送信">
+          <input class="btn-small" type="submit" value="プレビュー">
+          </div>
+        </div>
+        <div class="span4">
+          <h4>フォローミー</h4>
+          <ul>
+            <li>Twitter</li>
+            <li>Facebook</li>
+            <li>ほげほげ</li>
+          </ul>(c) ZenEdit
+        </div>
+      </div>
+    </footer>
+  <!-- Modal getWebImages -->
+    <div class="modal hide fade" id="getWebImages">
+      <div class="modal-header">
+        <a class="close" data-dismiss="modal">×</a>
+        <h3>画像を検索</h3>
+      </div>
+      <div class="modal-body">
+        <p>・CC画像をGoogleから検索</p>
+        <p>・CC画像をFlickrから検索</p>
+        <p>・CC画像を***から検索</p>
+      </div>
+      <div class="modal-footer">
+        <a href="#" class="btn btn-primary">Save changes</a>
+        <a class="btn" data-dismiss="modal">Close</a>
+      </div>
+    </div>
+  <!-- Preview -->
+  <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/javascript" src="./js/bootstrap-collapse.js"></script>
+  </body>
+</html>
